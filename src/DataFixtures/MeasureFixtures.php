@@ -65,7 +65,7 @@ class MeasureFixtures extends Fixture implements DependentFixtureInterface
      * Returns a random value limited by its min and max from a module or null to simulate a its failure
      * @var $module
      */
-    function simulateFailure(Module $module) {
+    private function simulateFailure(Module $module) {
         static $callCount = 0, $failureCount = 0, $failureBool = false;
         $randomValue = rand(1, 30);
         $callCount++;

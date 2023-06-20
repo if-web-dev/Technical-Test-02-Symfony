@@ -28,7 +28,7 @@ class Module
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = null;
+    private ?bool $status = true;
 
     #[ORM\Column(length: 255)]
     private ?string $unity = null;
@@ -45,9 +45,13 @@ class Module
     #[ORM\Column]
     private ?\DateTime $createdAt = null;
 
+    #[ORM\Column]
+    private ?int $increment = null;
+
     public function __construct()
     {
         $this->module = new ArrayCollection();
+        $this->increment = true;
     }
 
     public function getId(): ?int
@@ -189,6 +193,18 @@ class Module
     public function setCreatedAt(\DateTime $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getIncrement(): ?int
+    {
+        return $this->increment;
+    }
+
+    public function setIncrement(int $increment): static
+    {
+        $this->increment = $increment;
 
         return $this;
     }
